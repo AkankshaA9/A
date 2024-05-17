@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Citations</title>
+</head>
+<body>
+    <h1>Citations</h1>
+    <ul>
+        {% for result in results %}
+            <li>
+                <h2>Response:</h2>
+                <p>{{ result.response }}</p>
+                <h3>Citations:</h3>
+                <ul>
+                    {% for citation in result.citations %}
+                        <li>
+                            <p>ID: {{ citation.id }}</p>
+                            {% if citation.link %}
+                                <p>Link: <a href="{{ citation.link }}">{{ citation.link }}</a></p>
+                            {% endif %}
+                        </li>
+                    {% else %}
+                        <li>No citations found</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
